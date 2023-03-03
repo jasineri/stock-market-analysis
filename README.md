@@ -1,2 +1,1 @@
-# stock-market-dataset
-Stock Market Dataset
+# Stock Market Dataset
