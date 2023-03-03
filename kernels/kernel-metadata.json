@@ -1,0 +1,19 @@
+{
+  "id": "jasineri/stock-market-analysis",
+  "id_no": 35267856,
+  "title": "Stock Market Analysis",
+  "code_file": "stock-market-analysis.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": true,
+  "keywords": [
+    "time series analysis"
+  ],
+  "dataset_sources": [
+    "jasineri/stock-market-dataset"
+  ],
+  "kernel_sources": [],
+  "competition_sources": []
+}
