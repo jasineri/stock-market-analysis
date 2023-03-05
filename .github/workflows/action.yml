@@ -6,20 +6,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-#      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
       - name: Install and call Kaggle API
         run: |
           pip install kaggle \
-          && ls -la \
-          && ls -la stock-market-analysis\
-          && kaggle datasets version -p datasets -m "Automatic Update" \
-          && kaggle kernels pull jasineri/stock-market-analysis -p kernels -m \
-          && cat kernels/kernel-metadata.json \
-          && sed -i 's/"dataset_sources": []/"dataset_sources": [ "jasineri/stock-market-dataset" ]/' kernels/kernel-metadata.json
-          && kaggle kernels push -p kernels
+          && export workdir=stock-market-analysis
+          && kaggle datasets version -p $workdir/datasets -m "Automatic Update" \
+          && kaggle kernels pull jasineri/stock-market-analysis -p $workdir/kernels -m \
+          && sed -i 's/"dataset_sources": \[\]/"dataset_sources": \[ "jasineri\/stock-market-dataset" \]/' $workdir/kernels/kernel-metadata.json
+          && cat $workdir/kernels/kernel-metadata.json \
+          && kaggle kernels push -p $workdir/kernels
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
