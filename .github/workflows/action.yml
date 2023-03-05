@@ -14,3 +14,6 @@ jobs:
         run: pip install kaggle
       - name: Run Kaggle command
         run: kaggle competitions list
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
