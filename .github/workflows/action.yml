@@ -13,14 +13,11 @@ jobs:
       - name: Install and call Kaggle API
         run: |
           pip install kaggle \
-          && export workdir=stock-market-analysis \
-          && ls -la \
-          && ls -la stock-market-analysis \
-          && kaggle datasets version -p $workdir/datasets -m "Automatic Update" \
-          && kaggle kernels pull jasineri/stock-market-analysis -p $workdir/kernels -m \
-          && sed -i 's/"dataset_sources": \[\]/"dataset_sources": \[ "jasineri\/stock-market-dataset" \]/' $workdir/kernels/kernel-metadata.json \
-          && cat $workdir/kernels/kernel-metadata.json \
-          && kaggle kernels push -p $workdir/kernels
+          && kaggle datasets version -p datasets -m "Automatic Update" \
+          && kaggle kernels pull jasineri/stock-market-analysis -p kernels -m \
+          && sed -i 's/"dataset_sources": \[\]/"dataset_sources": \[ "jasineri\/stock-market-dataset" \]/' kernels/kernel-metadata.json \
+          && cat kernels/kernel-metadata.json \
+          && kaggle kernels push -p kernels
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
