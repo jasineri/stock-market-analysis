@@ -14,6 +14,8 @@ jobs:
         run: pip install kaggle
       - name: Run Kaggle command
         run: |
+          pwd
+          ls -la
           kaggle datasets version -p stock-market-analysis/datasets -m "Automatic Update"
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
