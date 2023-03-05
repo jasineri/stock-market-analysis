@@ -16,7 +16,7 @@ jobs:
         run: |
           pwd
           ls -la
-          kaggle datasets version -p stock-market-analysis/datasets -m "Automatic Update"
+          kaggle datasets version -p datasets -m "Automatic Update"
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
