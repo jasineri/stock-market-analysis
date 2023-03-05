@@ -16,7 +16,7 @@ jobs:
           && export workdir=stock-market-analysis
           && kaggle datasets version -p $workdir/datasets -m "Automatic Update" \
           && kaggle kernels pull jasineri/stock-market-analysis -p $workdir/kernels -m \
-          && sed -i 's/"dataset_sources": \[\]/"dataset_sources": \[ "jasineri\/stock-market-dataset" \]/' $workdir/kernels/kernel-metadata.json
+          && sed -i 's/"dataset_sources": \[\]/"dataset_sources": \[ "jasineri\/stock-market-dataset" \]/' $workdir/kernels/kernel-metadata.json \
           && cat $workdir/kernels/kernel-metadata.json \
           && kaggle kernels push -p $workdir/kernels
         env:
