@@ -10,13 +10,12 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-      - name: Setup Kaggle
-        run: pip install kaggle
-      - name: Run Kaggle command
+      - name: Install and call Kaggle API
         run: |
-          pwd
-          ls -la
-          kaggle datasets version -p datasets -m "Automatic Update"
+          pip install kaggle \
+          && kaggle datasets version -p datasets -m "Automatic Update" \
+          && kaggle kernels pull jasineri/stock-market-analysis -p kernels -m \
+          && cat kernels/kernel-metadata.json
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
