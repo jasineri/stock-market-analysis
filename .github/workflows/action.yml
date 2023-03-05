@@ -13,7 +13,8 @@ jobs:
       - name: Setup Kaggle
         run: pip install kaggle
       - name: Run Kaggle command
-        run: kaggle competitions list
+        run: |
+          kaggle datasets version -p stock-market-analysis/datasets -m "Automatic Update"
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
