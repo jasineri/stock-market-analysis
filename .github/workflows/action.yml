@@ -6,13 +6,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+#      - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
       - name: Install and call Kaggle API
         run: |
           pip install kaggle \
+          && ls -la \
+          && ls -la stock-market-analysis\
           && kaggle datasets version -p datasets -m "Automatic Update" \
           && kaggle kernels pull jasineri/stock-market-analysis -p kernels -m \
           && cat kernels/kernel-metadata.json \
