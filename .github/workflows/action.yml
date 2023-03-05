@@ -14,6 +14,8 @@ jobs:
         run: |
           pip install kaggle \
           && export workdir=stock-market-analysis \
+          && ls -la \
+          && ls -la stock-market-analysis \
           && kaggle datasets version -p $workdir/datasets -m "Automatic Update" \
           && kaggle kernels pull jasineri/stock-market-analysis -p $workdir/kernels -m \
           && sed -i 's/"dataset_sources": \[\]/"dataset_sources": \[ "jasineri\/stock-market-dataset" \]/' $workdir/kernels/kernel-metadata.json \
