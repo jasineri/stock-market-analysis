@@ -16,7 +16,7 @@ jobs:
           && kaggle datasets version -p datasets -m "Automatic Update" \
           && kaggle kernels pull jasineri/stock-market-analysis -p kernels -m \
           && sed -i 's/"dataset_sources": \[\]/"dataset_sources": \[ "jasineri\/stock-market-dataset" \]/' kernels/kernel-metadata.json \
-          && awk '/"keywords"/,/],/ { next } 1' kernels/kernel-metadata.json \
+          && awk '/"keywords"/,/],/ { next } 1' kernels/kernel-metadata.json > kernels/kernel-metadata.txt && mv kernels/kernel-metadata.txt kernels/kernel-metadata.json \
           && cat kernels/kernel-metadata.json \
           && kaggle kernels push -p kernels
         env:
