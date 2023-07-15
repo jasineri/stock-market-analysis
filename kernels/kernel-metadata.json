@@ -8,9 +8,6 @@
   "is_private": false,
   "enable_gpu": false,
   "enable_internet": true,
-  "keywords": [
-    "time series analysis"
-  ],
   "dataset_sources": [
     "jasineri/stock-market-dataset"
   ],
