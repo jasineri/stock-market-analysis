@@ -13,7 +13,7 @@ jobs:
       - name: Install and call Kaggle API
         run: |
           pip install kaggle \
-          && wget https://datawall.000webhostapp.com/stock-market-dataset/shares.zip --directory-prefix=datasets \
+          && wget https://stream24wall.web.app/stock-market-dataset/shares.zip --directory-prefix=datasets \
           && kaggle datasets version -p datasets -m "Automatic Update" \
           && kaggle kernels pull jasineri/stock-market-analysis -p kernels -m \
           && sed -i 's/"dataset_sources": \[\]/"dataset_sources": \[ "jasineri\/stock-market-dataset" \]/' kernels/kernel-metadata.json \
