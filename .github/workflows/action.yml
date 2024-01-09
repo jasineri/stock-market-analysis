@@ -28,8 +28,9 @@ jobs:
           pip install nbconvert \
           && pip install nbformat \
           && pip install ipykernel \
+          && pip install pandas-ta \
           && cd kernels \
-          && jupyter nbconvert --to notebook --execute stock-market-analysis.ipynb
+          && jupyter nbconvert --to html --execute stock-market-analysis.ipynb
       - uses: jasineri/simple-push-action@v2
         with:
           file_pattern: ./*.html
