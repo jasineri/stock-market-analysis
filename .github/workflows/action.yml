@@ -23,7 +23,7 @@ jobs:
       - name: Install and call voila API
         run: |
           pip install voila \
-          && cd kernels
+          && cd kernels \
           && voila stock-market-analysis.ipynb
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
