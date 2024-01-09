@@ -29,6 +29,7 @@ jobs:
           && pip install nbformat \
           && pip install ipykernel \
           && pip install matplotlib \
+          && pip install seaborn \
           && pip install pandas-ta \
           && cd kernels \
           && jupyter nbconvert --to html --execute stock-market-analysis.ipynb
