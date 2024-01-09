@@ -22,7 +22,9 @@ jobs:
 #          && kaggle kernels push -p kernels
       - name: Install and call voila API
         run: |
-          pip install voila
+          pip install voila \
+          && cd kernels
+          && voila stock-market-analysis.ipynb
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
