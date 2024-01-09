@@ -27,6 +27,7 @@ jobs:
         run: |
           pip install nbconvert \
           && pip install nbformat \
+          && install ipykernel \
           && cd kernels \
           && jupyter nbconvert --to notebook --execute stock-market-analysis.ipynb
       - uses: jasineri/simple-push-action@v2
