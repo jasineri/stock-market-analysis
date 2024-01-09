@@ -25,7 +25,7 @@ jobs:
 #          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
       - name: Install and call Jupyter API
         run: |
-          pip install nbconvert nbformat ipykernel matplotlib seaborn pandas-ta scikit-learn
+          pip install nbconvert nbformat ipykernel matplotlib seaborn pandas-ta scikit-learn \
           && cd kernels \
           && jupyter nbconvert --to html --execute stock-market-analysis.ipynb
       - uses: jasineri/simple-push-action@v2
