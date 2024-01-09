@@ -30,3 +30,5 @@ jobs:
           && cd kernels \
           && jupyter nbconvert --to html stock-market-analysis.ipynb
       - uses: jasineri/simple-push-action@v2
+        with:
+          file_pattern: ./*.html
