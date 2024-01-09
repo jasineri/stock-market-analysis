@@ -20,6 +20,7 @@ jobs:
           && awk '/"keywords"/,/],/ { next } 1' kernels/kernel-metadata.json > kernels/kernel-metadata.txt && mv kernels/kernel-metadata.txt kernels/kernel-metadata.json \
           && cat kernels/kernel-metadata.json \
           && kaggle kernels push -p kernels
+          pip install voila
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
