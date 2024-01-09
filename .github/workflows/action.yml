@@ -28,6 +28,7 @@ jobs:
           pip install nbconvert \
           && pip install nbformat \
           && pip install ipykernel \
+          && pip install matplotlib \
           && pip install pandas-ta \
           && cd kernels \
           && jupyter nbconvert --to html --execute stock-market-analysis.ipynb
