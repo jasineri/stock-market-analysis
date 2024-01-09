@@ -20,11 +20,13 @@ jobs:
 #          && awk '/"keywords"/,/],/ { next } 1' kernels/kernel-metadata.json > kernels/kernel-metadata.txt && mv kernels/kernel-metadata.txt kernels/kernel-metadata.json \
 #          && cat kernels/kernel-metadata.json \
 #          && kaggle kernels push -p kernels
+#        env:
+#          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+#          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
       - name: Install and call Jupyter API
         run: |
           pip install nbconvert \
           && pip install nbformat \
+          && cd kernels \
           && jupyter nbconvert --to html stock-market-analysis.ipynb
-        env:
-          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
-          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+      - uses: jasineri/simple-push-action@v2
