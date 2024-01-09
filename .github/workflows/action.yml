@@ -27,7 +27,7 @@ jobs:
         run: |
           pip install nbconvert nbformat ipykernel matplotlib seaborn pandas-ta scikit-learn \
           && cd kernels \
-          && jupyter nbconvert --to html --no-input --TagRemovePreprocessor.remove_cell_tags='{"hide_code"}' --execute stock-market-analysis.ipynb
+          && jupyter nbconvert --to html --no-input --execute stock-market-analysis.ipynb
       - uses: jasineri/simple-push-action@v2
         with:
           file_pattern: ./*.html
