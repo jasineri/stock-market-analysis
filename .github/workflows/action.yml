@@ -30,7 +30,7 @@ jobs:
 #          && jupyter nbconvert --to html --no-input --execute stock-market-analysis.ipynb
       - name: Deploy reports
         run: |          
-          apt-get install rclone \
+          sudo apt-get install rclone \
           && rclone copy stock-market-analysis.html jasinericode:stock-market-analysis/reports
         env:
           RCLONE_CONFIG_JASINERICODE_TYPE: ${{ secrets.RCLONE_CONFIG_JASINERICODE_TYPE }}
