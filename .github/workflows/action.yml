@@ -31,6 +31,8 @@ jobs:
       - name: Deploy reports
         run: |          
           sudo apt-get install rclone \
+          && pwd \
+          && ls -la \
           && rclone copy stock-market-analysis.html jasinericode:stock-market-analysis/reports
         env:
           RCLONE_CONFIG_JASINERICODE_TYPE: ${{ secrets.RCLONE_CONFIG_JASINERICODE_TYPE }}
