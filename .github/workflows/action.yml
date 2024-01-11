@@ -33,7 +33,7 @@ jobs:
           sudo apt-get install rclone \
           && pwd \
           && ls -la \
-          && rclone copy stock-market-analysis.html jasinericode:stock-market-analysis/reports
+          && rclone copy kernels/stock-market-analysis.html jasinericode:stock-market-analysis/reports
         env:
           RCLONE_CONFIG_JASINERICODE_TYPE: ${{ secrets.RCLONE_CONFIG_JASINERICODE_TYPE }}
           RCLONE_CONFIG_JASINERICODE_TOKEN: ${{ secrets.RCLONE_CONFIG_JASINERICODE_TOKEN }}
