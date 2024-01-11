@@ -14,37 +14,29 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-#      - name: Install and call Kaggle API
-#        run: |
-#          pip install kaggle \
-#          && wget https://stream24wall.web.app/stock-market-dataset/shares.zip --directory-prefix=datasets \
-#          && kaggle datasets version -p datasets -m "Automatic Update" \
-#          && kaggle kernels pull jasineri/stock-market-analysis -p kernels -m \
-#          && sed -i 's/"dataset_sources": \[\]/"dataset_sources": \[ "jasineri\/stock-market-dataset" \]/' kernels/kernel-metadata.json \
-#          && awk '/"keywords"/,/],/ { next } 1' kernels/kernel-metadata.json > kernels/kernel-metadata.txt && mv kernels/kernel-metadata.txt kernels/kernel-metadata.json \
-#          && cat kernels/kernel-metadata.json \
-#          && kaggle kernels push -p kernels
-#        env:
-#          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
-#          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+      - name: Install and call Kaggle API
+        run: |
+          pip install kaggle \
+          && wget https://stream24wall.web.app/stock-market-dataset/shares.zip --directory-prefix=datasets \
+          && kaggle datasets version -p datasets -m "Automatic Update" \
+          && kaggle kernels pull jasineri/stock-market-analysis -p kernels -m \
+          && sed -i 's/"dataset_sources": \[\]/"dataset_sources": \[ "jasineri\/stock-market-dataset" \]/' kernels/kernel-metadata.json \
+          && awk '/"keywords"/,/],/ { next } 1' kernels/kernel-metadata.json > kernels/kernel-metadata.txt && mv kernels/kernel-metadata.txt kernels/kernel-metadata.json \
+          && cat kernels/kernel-metadata.json \
+          && kaggle kernels push -p kernels
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
       - name: Install and call Jupyter API
         run: |
           pip install nbconvert nbformat ipykernel matplotlib seaborn pandas-ta scikit-learn \
           && cd kernels \
           && jupyter nbconvert --to html --no-input --execute stock-market-analysis.ipynb
-#      - name: Deploy reports
-#        run: |
-#          sudo apt-get install rclone \
-#          && rclone copy kernels/stock-market-analysis.html jasinericode:stock-market-analysis/reports
-#        env:
-#          RCLONE_CONFIG_JASINERICODE_TYPE: ${{ secrets.RCLONE_CONFIG_JASINERICODE_TYPE }}
-#          RCLONE_CONFIG_JASINERICODE_TOKEN: ${{ secrets.RCLONE_CONFIG_JASINERICODE_TOKEN }}
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
           path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
