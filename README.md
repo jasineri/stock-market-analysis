@@ -1,6 +1,6 @@
 # Stock Market Analysis
 
-### [View on github](https://jasineri.github.io/stock-market-analysis/kernels/stock-market-analysis.html)
+### [View on github](https://jasineri.github.io/stock-market-analysis/stock-market-analysis.html)
 
 ### [View on kaggle](https://www.kaggle.com/code/jasineri/stock-market-analysis)
 
