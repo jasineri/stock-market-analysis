@@ -30,7 +30,7 @@ jobs:
           && jupyter nbconvert --to html --no-input --no-prompt --TagRemovePreprocessor.remove_cell_tags='{"hide_code"}' --log-level=CRITICAL --execute stock-market-analysis.ipynb
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      - name: Prepare Target
+      - name: Prepare target
         run: |
           mkdir -p target \
           cp stock-market-analysis.html target/
