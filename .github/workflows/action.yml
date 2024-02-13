@@ -10,30 +10,17 @@ jobs:
       pages: write
       id-token: write
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-      - name: Install and call Kaggle API
-        run: |
-          pip install kaggle \
-          && wget https://stream24wall.web.app/stock-market-dataset/shares.zip --directory-prefix=datasets \
-          && kaggle datasets version -p datasets -m "Automatic Update" \
-          && kaggle kernels push -p kernels
-        env:
-          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
-          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
       - name: Install and call Jupyter API
         run: |
-          pip install nbconvert nbformat ipykernel matplotlib seaborn pandas-ta scikit-learn \
+          mkdir -p kernels \
           && cd kernels \
-          && jupyter nbconvert --to html --no-input --no-prompt --TagRemovePreprocessor.remove_cell_tags='{"hide_code"}' --log-level=CRITICAL --execute stock-market-analysis.ipynb
+          && echo "<body>test</body>" > stock-market-analysis.html
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Prepare target
         run: |
           mkdir -p target \
-          cp stock-market-analysis.html target/
+          && cp stock-market-analysis.html target/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
