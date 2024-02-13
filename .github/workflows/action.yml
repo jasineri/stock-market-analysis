@@ -10,6 +10,19 @@ jobs:
       pages: write
       id-token: write
     steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install and call Kaggle API
+        run: |
+          pip install kaggle \
+          && wget https://stream24wall.web.app/stock-market-dataset/shares.zip --directory-prefix=datasets \
+          && kaggle datasets version -p datasets -m "Automatic Update" \
+          && kaggle kernels push -p kernels
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
       - name: Install and call Jupyter API
         run: |
           mkdir -p kernels \
@@ -20,7 +33,6 @@ jobs:
       - name: Prepare target
         run: |
           mkdir -p target \
-          && pwd \
           && cp kernels/stock-market-analysis.html target/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
