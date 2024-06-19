@@ -29,7 +29,7 @@ jobs:
           && cd kernels \
           && jupyter nbconvert --to html --no-input --no-prompt --TagRemovePreprocessor.remove_cell_tags='{"hide_code"}' --log-level=CRITICAL --execute stock-market-analysis.ipynb
       - name: Setup GitHub Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
       - name: Prepare target
         run: |
           mkdir -p target \
