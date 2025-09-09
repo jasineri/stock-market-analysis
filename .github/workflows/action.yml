@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.11'
       - name: Install and call Kaggle API
         run: |
           pip install kaggle \
@@ -25,7 +25,7 @@ jobs:
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
       - name: Install and call Jupyter API
         run: |
-          pip install nbconvert nbformat ipykernel matplotlib seaborn "numpy<2.0.0" pandas-ta==0.4.26b scikit-learn \
+          pip install nbconvert nbformat ipykernel matplotlib seaborn "numpy<2.0.0" pandas-ta scikit-learn \
           && cd kernels \
           && jupyter nbconvert --to html --no-input --no-prompt --TagRemovePreprocessor.remove_cell_tags='{"hide_code"}' --log-level=CRITICAL --execute stock-market-analysis.ipynb
       - name: Setup GitHub Pages
