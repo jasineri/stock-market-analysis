@@ -23,6 +23,7 @@ jobs:
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        continue-on-error: true
       - name: Install and call Jupyter API
         run: |
           pip install nbconvert nbformat ipykernel matplotlib seaborn numpy pandas-ta scikit-learn \
